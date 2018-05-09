@@ -1,0 +1,12 @@
+## Java
+*.class
+*.war
+*.ear
+hs_err_pid*
+
+##Intellij
+.idea/
+*/target/
+*.ipr
+*.iws
+*.iml
