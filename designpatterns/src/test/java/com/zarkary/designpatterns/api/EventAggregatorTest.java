@@ -204,4 +204,26 @@ public class EventAggregatorTest {
         // Assert
         verify(action, times(0)).doAction(message);
     }
+
+    @Test
+    public void unsubscribe_whenThereAreManySubscriptionsForTheSameEventType_thenGivenSubscriptionIsUnsubscribed() {
+
+        // Arrange
+        final IEventType eventType = mock(IEventType.class);
+
+        final IAction firstAction = mock(IAction.class);
+        final IMessage firstMessage = mock(IMessage.class);
+        when(firstMessage.getEventType()).thenReturn(eventType);
+        eventAggregator.subscribe(eventType, firstAction);
+
+        final IAction secondAction = mock(IAction.class);
+        final ISubscription secondSubscription = eventAggregator.subscribe(eventType, secondAction);
+
+        // Act
+        eventAggregator.unsubscribe(secondSubscription);
+        eventAggregator.publish(firstMessage);
+
+        // Assert
+        verify(firstAction, times(1)).doAction(firstMessage);
+    }
 }

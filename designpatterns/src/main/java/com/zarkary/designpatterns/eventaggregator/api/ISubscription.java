@@ -17,10 +17,9 @@
 package com.zarkary.designpatterns.eventaggregator.api;
 
 /**
- * It is a class to create {@link ISubscription} tokens. When a {@link ISubscriber}
- * subscribes to interested {@link IEventType} via {@link EventAggregator} the
- * EventAggregator returns a subscription token that is further used by the subscriber
- * to keep track of its subscriptions.
+ * This class consist a {@link ISubscription}. A {@link ISubscriber} is getting a Subscription
+ * after it's registration to the {@link EventAggregator}. With this way the EventAggregator
+ * will keep track of it's subscribers.
  *
  * @param <T> the data type of message content
  *

@@ -110,7 +110,7 @@ public class EventAggregator {
     public void unsubscribe(final ISubscription subscription) {
         final IEventType eventType = requireNonNull(subscription).getEventType();
         if(subscriptionsByEventType.containsKey(eventType)) {
-            subscriptionsByEventType.remove(eventType);
+            subscriptionsByEventType.get(eventType).remove(subscription);
         }
     }
 }
